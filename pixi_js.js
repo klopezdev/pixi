@@ -1,5 +1,6 @@
 let app;
 let floor;
+let viewport;
 const tables = [];
 
 $(document).ready(function() {
@@ -10,8 +11,8 @@ $(document).ready(function() {
     app.view.id = "pixi-view";
     $( '#pixi-div' ).append( app.view );
 
+    viewport = setupViewport( 1943, 1304, app );
     resizeViewer();
-    const viewport = setupViewport( 2000, 2000, app );
 
     floor = PIXI.Sprite.from( "images/Cabanas.png" );
     floor.position.set( -10, -10 );
@@ -40,6 +41,8 @@ function resizeViewer() {
 
     // Resize the renderer
     app.renderer.resize( parent.clientWidth, parent.clientHeight );
+    viewport.screenWidth = parent.clientWidth;
+    viewport.screenHight = parent.cleintHeight;
 
     setTimeout( function() { resizeViewer(); }, 50 );
 }
@@ -63,8 +66,8 @@ function createTable( id, height, x, y, rotation, viewport ) {
 
 function setupViewport( width, height, app ) {
     var viewport = new Viewport.Viewport({
-        screenWidth: window.innerWidth,
-        screenHeight: window.innerHeight,
+        screenWidth: $( '#pixi-div' ).innerWidth(),
+        screenHeight: $( '#pixi-div' ).innerHeight(),
         worldWidth: width,
         worldHeight: height,
 
@@ -79,7 +82,9 @@ function setupViewport( width, height, app ) {
     viewport
         .drag()
         .pinch()
-        .wheel();
+        .wheel()
+        .bounce()
+        .clampZoom( { maxWidth: 1924 } );
 
     return viewport;
 }
