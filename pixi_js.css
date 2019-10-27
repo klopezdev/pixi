@@ -1,0 +1,52 @@
+body {
+    margin: 0px;
+}
+
+#leftSide {
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    background-color: white;
+
+    height: 1024pzx;
+    width: 200px;
+    float: left;
+    display: none;
+    padding: 5px;
+}
+
+#click {
+    z-index: 100;
+    position: absolute;
+    top: 6;
+    left: 0;
+
+    text-align: center;
+    vertical-align: middle;
+    color: #808080;
+    background-color: white;
+    font-size: 10px;
+    margin-top: 8px;
+    padding: 18px 6px;
+    cursor: hand;
+
+    border-left: 1px solid #D4D4D4;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+#reservations-div {
+    float: left;
+    margin-right: 20px;
+}
+
+#reservations-list {
+    margin-block-start: 5px;
+}
+
+.reservations-item {
+    cursor: grab;
+}
+
+#pixi-div {
+    height: 100%;
+}
